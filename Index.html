@@ -1,0 +1,81 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>JSON Formatter</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            margin: 0;
+            padding: 0;
+            display: flex;
+            flex-direction: column;
+            min-height: 100vh;
+        }
+        header {
+            background-color: #333;
+            color: white;
+            padding: 1rem;
+            text-align: center;
+        }
+        main {
+            flex: 1;
+            padding: 1rem;
+        }
+        footer {
+            background-color: #333;
+            color: white;
+            text-align: center;
+            padding: 1rem;
+        }
+        textarea {
+            width: 100%;
+            height: 300px;
+            margin-bottom: 1rem;
+        }
+        button {
+            padding: 0.5rem 1rem;
+            background-color: #333;
+            color: white;
+            border: none;
+            cursor: pointer;
+        }
+        button:hover {
+            background-color: #555;
+        }
+        .output {
+            white-space: pre-wrap;
+            background-color: #f4f4f4;
+            padding: 1rem;
+            border: 1px solid #ddd;
+        }
+    </style>
+</head>
+<body>
+    <header>
+        <h1>JSON Formatter</h1>
+    </header>
+    <main>
+        <textarea id="jsonInput" placeholder="Enter JSON here..."></textarea>
+        <button onclick="formatJSON()">Format JSON</button>
+        <div id="jsonOutput" class="output"></div>
+    </main>
+    <footer>
+        <p>&copy; 2023 JSON Formatter</p>
+    </footer>
+    <script>
+        function formatJSON() {
+            const input = document.getElementById('jsonInput').value;
+            const output = document.getElementById('jsonOutput');
+            try {
+                const json = JSON.parse(input);
+                output.textContent = JSON.stringify(json, null, 4);
+            } catch (e) {
+                output.textContent = 'Invalid JSON: ' + e.message;
+            }
+        }
+    </script>
+    
+</body>
+</html>
