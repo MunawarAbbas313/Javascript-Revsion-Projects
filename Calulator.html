@@ -1,0 +1,83 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Calculator</title>
+</head>
+<body>
+    <nav style="display: flex; justify-content: space-between; align-items: center; padding: 1rem; background-color: #333;">
+        <div class="logo" style="color: white; font-size: 1.5rem;"> TABLE</div>
+        <div class="buttons">
+            <button style="padding: 0.5rem 1rem; margin: 0 0.5rem; background-color: #4CAF50; color: white; border: none; border-radius: 4px;  cursor: pointer; ">Calculate</button>
+            <button style="padding: 0.5rem 1rem; margin: 0 0.5rem; background-color: #f44336; color: white; border: none; border-radius: 4px;">Clear</button>
+        </div>
+</nav>
+<main style="display: flex; flex-direction: column; align-items: center; margin-top: 2rem;">
+    <input type="number" id="numberInput" placeholder="Enter a number" style="padding: 0.5rem; font-size: 1rem; border: 1px solid #ccc; border-radius: 4px; margin-bottom: 1rem;">
+    <button class="btn" style="padding: 0.5rem 1rem; background-color: #4CAF50; color: white; border: none; border-radius: 4px; cursor: pointer;">Generate Table</button>
+    <div id="tableContainer" style="margin-top: 2rem; width: 100%; max-width: 600px;"></div>
+</main>
+
+<script>
+   
+    const button = document.querySelector('.btn');
+    button.addEventListener('click', function() {
+        const num = document.getElementById('numberInput').value;
+        const tableContainer = document.getElementById('tableContainer');
+        tableContainer.innerHTML = '';
+        const table = document.createElement('table');
+        table.style.width = '100%';
+        table.style.borderCollapse = 'collapse';
+        table.style.marginTop = '1rem';
+        table.style.border = '1px solid #ccc';
+        table.style.borderRadius = '4px';
+        table.style.overflow = 'hidden';
+        table.style.boxShadow = '0 0 10px rgba(0, 0, 0, 0.1)';
+        const thead = document.createElement('thead');
+        thead.style.backgroundColor = '#f2f2f2';
+        const tr = document.createElement('tr');
+        const th1 = document.createElement('th');
+        th1.style.border = '1px solid #ccc';
+        th1.style.padding = '0.5rem';
+        th1.textContent = 'Number';
+        const th2 = document.createElement('th');
+        th2.style.border = '1px solid #ccc';
+        th2.style.padding = '0.5rem';
+        th2.textContent = 'Square';
+        const th3 = document.createElement('th');
+        th3.style.border = '1px solid #ccc';
+        th3.style.padding = '0.5rem';
+        th3.textContent = 'Cube';
+        tr.appendChild(th1);
+        tr.appendChild(th2);
+        tr.appendChild(th3);
+        thead.appendChild(tr);
+        table.appendChild(thead);
+        const tbody = document.createElement('tbody');
+        for (let i = 1; i <= num; i++) {
+            const tr = document.createElement('tr');
+            const td1 = document.createElement('td');
+            td1.style.border = '1px solid #ccc';
+            td1.style.padding = '0.5rem';
+            td1.textContent = i;
+            const td2 = document.createElement('td');
+            td2.style.border = '1px solid #ccc';
+            td2.style.padding = '0.5rem';
+            td2.textContent = i * i;
+            const td3 = document.createElement('td');
+            td3.style.border = '1px solid #ccc';
+            td3.style.padding = '0.5rem';
+            td3.textContent = i * i * i;
+            tr.appendChild(td1);
+            tr.appendChild(td2);
+            tr.appendChild(td3);
+            tbody.appendChild(tr);
+        }
+        table.appendChild(tbody);
+        tableContainer.appendChild(table);
+    });
+
+</script>
+</body>
+</html>
