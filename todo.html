@@ -1,0 +1,304 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>To Do List</title>
+    <style>
+        *{
+            padding: 0;
+            margin: 0;
+            box-sizing: border-box;
+        }
+        body{
+            background-color: #a09c9c;
+        }
+        nav{
+            margin-top: 0;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            background-color: rgba(0, 0, 0, 0.486);
+            padding: 10px;
+            margin: 0;
+            border-radius: 2px;
+            font-family: 'Courier New', Courier, monospace;
+            width: 100%;
+            height: 100%;
+            
+        }
+        .log{
+            border:none;
+        
+            background-color: rgba(188, 196, 196, 0.582);
+            font-weight: 800;
+            padding: 12px;
+            border-radius: 20px;
+            cursor: pointer;
+        }
+        .log:hover{
+            background-color: rgba(169, 230, 230, 0.582);
+        }
+        .login{
+            gap: 30px;
+        }
+        .loginb{
+            padding: 10px;
+            border: none;
+            border-radius: 12px;
+            background-color: rgb(162, 192, 255);
+            font-size: 20px;
+            color: white;
+            font-weight: 600;
+            cursor: pointer;
+
+        }
+        .loginbb{
+            padding: 10px;
+            border: none;
+            background-color: gainsboro;
+            border-radius: 12px;
+            font-size: 20px;
+            color: rgb(0, 0, 0);
+            font-weight: 600;
+            cursor: pointer;
+
+        }
+        .loginb:hover{
+            background-color: rgb(108, 149, 238);
+            transition: all 0.6s ease;
+        }
+        .loginbb:hover{
+
+            transition: all 0.6s ease;
+            background-color: rgb(228, 202, 202);
+        }
+     .sty{
+        display: flex;
+        justify-content: center;
+        padding-top: 40px;
+        font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
+        font-size: 50px;
+
+     }
+     .sty>span{
+        color: aqua;
+     }
+     .taskenter{
+        display: flex;
+        justify-content: center;
+        padding-top: 50px;
+        position: relative;
+        
+     }
+     .task{
+        padding: 14px;
+        width: 600px;
+        border: none;
+        background-color: #ffffffa8;
+        border-radius: 20px;
+        outline: none;
+        font-size: 20px;
+        font-family: Geneva, Verdana, sans-serif;
+        color: black;
+        
+     }
+    .add{
+        border: none;
+        padding: 14px;
+        border-radius: 20px;
+        width: 80px;
+        background-color: rgb(93, 136, 153);
+        font-size: 20px;
+        cursor: pointer;
+        position: absolute;
+        right: 28%;
+        
+        color: black;
+
+    
+        
+    }
+    .add:hover{
+        background-color: rgb(88, 175, 204);
+        font-weight: 500;
+        transition: all 0.6s ease;
+        color: white;
+        
+    }
+    .listcont{
+        display: flex;
+        justify-content: center;
+        margin-top: 55px;
+    }
+    .lsit{
+        list-style: none;
+        padding: 20px;
+    }
+    .task1{
+        display: flex;
+        
+        justify-content: center;
+        align-items: center;
+        padding: 20px;
+        width: 600px;
+        background-color: #ffffffa8;
+        border-radius: 20px;
+        margin-top: 8px;
+    }
+    .taskinput{
+        width: 80%;
+       
+        background-color: transparent;
+        border: none;
+        font-size: 20px;
+        outline: none;
+
+    }
+   
+
+    .edit{
+        padding: 10px;
+        border: none;
+        background-color: rgba(93, 136, 153, 0.64);
+        border-radius: 10px;
+        margin-left: 10px;
+        cursor: pointer;
+        color: white;
+    }
+    .delete{
+        padding: 10px;
+        border: none;
+        background-color: rgba(240, 29, 29, 0.574);
+        border-radius: 10px;
+        margin-left: 10px;
+        cursor: pointer;
+        color: white;   
+        
+
+    }
+    .edit:hover{
+        background-color: rgb(88, 175, 204);
+        transition: all 0.6s ease;
+    }
+    .delete:hover{
+        background-color: rgb(255, 0, 0);
+        transition: all 0.6s ease;
+    }
+
+    @media (max-width: 768px) {
+        .task {
+            width: 80%;
+        }
+        .add {
+            width: 60px;
+            right: 5%;
+        }
+        .task1 {
+            width: 80%;
+        }
+    }
+
+    @media (max-width: 480px) {
+        .task {
+            width: 70%;
+        }
+        .add {
+            width: 50px;
+            right: 10%;
+        }
+        .task1 {
+            width: 70%;
+        }
+    }
+    </style>
+</head>
+<body>
+    <nav>
+        <div class="log">
+            <h1 class="todologo">TO DO</h1>
+        </div>
+        <div class="login">
+            <button class="loginb">Login</button>
+            <button class="loginbb">SignUp</button>
+        </div>
+    </nav>
+    <h1 class="sty">
+        WELL <span>COME</span>
+    </h1>
+    <div class="inputcantainer">
+         <div class="taskenter">
+            <input type="text" class="task" placeholder="ENTER YOUR TASK">
+            <button class="add">ADD</button>
+         </div>
+    </div>
+   
+    <div class="listcont">
+        <div class="cen">
+            <ul class="lsit">
+          
+    
+            </ul>
+        </div>
+    </div>
+
+    <script>
+        const taskfield = document.querySelector(".task");
+        const subbtn = document.querySelector(".add")
+        
+        subbtn.addEventListener("click",()=>{
+       if(!taskfield.value)
+       {
+        alert("Cannot Proceed with empty Value ")
+          
+       }
+       else{
+      
+        addTask();
+        taskfield.value = "";
+       }
+        });
+
+       function addTask()
+       {
+         const list = document.querySelector(".lsit");
+         const li = document.createElement("li");
+        li.classList.add("task1");
+        const inputF = document.createElement("input");
+        inputF.classList.add("taskinput");
+        inputF.value = taskfield.value;
+        inputF.disabled = true;
+        const editbtn = document.createElement("button");
+        editbtn.classList.add("edit");
+        editbtn.innerText = "EDIT";
+        const delbtn = document.createElement("button");
+        delbtn.classList.add("delete");
+        delbtn.innerText = "DELETE";
+         
+        editbtn.addEventListener("click", ()=>{
+            inputF.disabled = !inputF.disabled;
+            editbtn.innerText = inputF.disabled ? "EDIT" : "SAVE";
+            editbtn.innerText ==  "SAVE" ? inputF.style.outline = "1px solid gray" : inputF.style.outline = "none";
+  })
+      
+        delbtn.addEventListener("click", (e)=>{
+            console.log(e.target.innerText);
+            
+            e.target.parentElement.remove();
+           
+        })
+
+
+            list.appendChild(li);
+            li.appendChild(inputF);
+            li.appendChild(editbtn);
+            li.appendChild(delbtn);
+       }
+   
+   //task1 li
+   //taskinput
+   // edit
+   //delete
+    </script>
+</body>
+</html>
