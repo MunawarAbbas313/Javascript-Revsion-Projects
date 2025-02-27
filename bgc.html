@@ -1,0 +1,221 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Backround Changer</title>
+    <style>
+        *{
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        nav{
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 14px;
+            background-color: lightgrey;
+            font-family: "poppins";
+        }
+        .logodiv{
+            font-size: 30px;
+            font-weight: bold;
+        }
+        .login{
+            padding: 10px 20px;
+            background-color: lightblue;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+            font-size: 18px;
+            font-weight: bold;ppins";
+        }
+        .singup{   font-weight: bold;
+            padding: 10px 20px;
+            background-color: rgb(186, 230, 173);
+            border: none;
+            background-color: rgb(186, 230, 173);
+            border-radius: 5px;
+            cursor: pointer;
+            font-family: "poppins";
+            font-size: 18px;
+            font-weight: bold;
+        }
+        .login:hover{
+            background-color: rgb(104, 249, 246);
+            transition: all 0.5s;
+        }
+        .singup:hover{
+            background-color: rgb(59, 232, 122);
+            transition: all 0.5s;
+        }
+        .mainhead{
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            font-family: "poppins";
+            font-size: 50px;
+            font-weight: bold;
+            margin-top: 50px;
+        }
+
+        @media (max-width: 768px) {
+            nav {
+            flex-direction: column;
+            }
+            .mainhead {
+            font-size: 20px;
+            flex-wrap: wrap;
+
+            }
+            .login, .singup {
+            width: 100%;
+            margin-bottom: 10px;
+            }
+        }
+        .ch{
+            display: flex;
+            justify-content: space-around;
+            align-items: center;
+            margin-top: 50px;
+            font-family: "poppins";
+        }
+        .ch1{
+            background-color: rgba(255, 0, 0, 0.433);
+            padding: 20px;
+            border-radius: 10px;
+            cursor: pointer;
+        }
+        .ch2{
+            background-color: rgba(0, 128, 0, 0.34);
+            padding: 20px;
+            border-radius: 10px;
+            cursor: pointer;
+        }
+        .ch3{
+            background-color: rgba(0, 0, 255, 0.396);
+            padding: 20px;
+            border-radius: 10px;
+            cursor: pointer;
+        }
+        .ch4{
+            background-color: rgba(255, 255, 0, 0.429);
+            padding: 20px;
+            border-radius: 10px;
+            cursor: pointer;
+        }
+        .red{
+            font-size: 20px;
+            font-weight: bold;
+            color: white;
+        }
+        .green{
+            font-size: 20px;
+            font-weight: bold;
+            color: white;
+        }
+        .blue{
+            font-size: 20px;
+            font-weight: bold;
+            color: white;
+        }
+        .yellow{
+            font-size: 20px;
+            font-weight: bold;
+            color: rgb(0, 0, 0);
+        }
+        .ch1:hover{
+            background-color: red;
+            transition: all 0.5s;
+        }
+        .ch2:hover{
+            background-color: green;
+            transition: all 0.5s;
+        }
+        .ch3:hover{
+            background-color: blue;
+            transition: all 0.5s;
+        }
+        .ch4:hover{
+            background-color: yellow;
+            transition: all 0.5s;
+        }
+
+        @media (max-width: 768px) {
+            .ch {
+            flex-direction: column;
+            align-items: stretch;
+            }
+            .ch1, .ch2, .ch3, .ch4 {
+            margin-bottom: 10px;
+            width: 100%;
+            text-align: center;
+            }
+        }
+
+        
+       
+
+    </style>
+</head>
+<body>
+    <nav>
+        <div class="logo">
+            <h1 class="logodiv">CHNG</h1>
+        </div>
+        <div class="leftritgh">
+            <button class="login">Login</button>
+            <button class="singup">Signup</button>
+        </div>
+    </nav>
+    <h1 class="mainhead">WELLCOME <span>TO</span>
+       BACKGROUD <span>CHANGER</span>
+    </h1>
+
+    <div class="ch">
+        <button class="ch1">
+            <h1 class="red">
+            RED
+            </h1>
+        </button>
+        <button class="ch2">
+            <h1 class="green">
+            GREEN
+            </h1>
+        </button>
+        <button class="ch3">
+            <h1 class="blue">
+            BLUE
+            </h1>
+        </button>
+        <button class="ch4">
+            <h1 class="yellow">
+            YELLOW
+            </h1>
+        </button>
+
+        <script>
+         const buttons = document.querySelectorAll('button');
+         buttons.forEach((button)=>{
+            button.addEventListener("click",(e)=>{
+              if(button.innerText === "RED"){
+                  document.body.style.backgroundColor = "red";
+              }
+              if(button.innerText === "GREEN"){
+                  document.body.style.backgroundColor = "green";
+              }
+              if(button.innerText === "BLUE"){
+                  document.body.style.backgroundColor = "blue";
+              }
+                if(button.innerText == "YELLOW"){
+                    document.body.style.backgroundColor = "yellow";
+                }
+                
+            })
+            
+         })
+
+        </script>
+</body>
+</html>
