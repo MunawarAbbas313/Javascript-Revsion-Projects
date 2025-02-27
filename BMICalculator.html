@@ -1,0 +1,435 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>BMI CALCULATOR</title>
+    <style>
+        *{
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        body{
+            font-family: 'poppins', sans-serif;
+            background-color: #d5d2d2;
+        }
+        nav{
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            background-color: #333;
+            color: #fff;
+            padding: 20px;
+            flex-wrap: wrap;
+        }
+        h4{
+            color: #fff;
+            padding: 10px 20px;
+            border: 1px solid ;
+            font-size: 15px;
+            border-radius: 5px;
+            cursor: pointer;
+        }
+        .btns{
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            gap: 12px;
+        }
+        .clear{
+            background-color: #c42828a5;
+            color: #fff;
+            padding: 10px 20px;
+            border: none;
+            font-size: 15px;
+            border-radius: 5px;
+            cursor: pointer;
+        }
+        .clear:hover{
+            background-color: #f00;
+            transition: all 0.3s ease;
+        }
+        .his{
+            background-color: #8dc4288b;
+            color: #fff;
+            padding: 10px 20px;
+            border: none;
+            font-size: 15px;
+            border-radius: 5px;
+            cursor: pointer;
+        }
+        .his:hover{
+            background-color: #8dc428;
+            transition: all 0.3s ease;
+        }
+
+        @media (min-width: 1024px) {
+            h4 {
+            font-size: 20px;
+            padding: 15px 25px;
+            }
+            .clear, .his {
+            font-size: 20px;
+            padding: 15px 25px;
+            }
+        }
+        .heading{
+            display: flex;
+            justify-content: center;
+            margin-top: 20px;
+            flex-wrap: wrap;
+            font-size: 30px;
+            font-weight: 800;
+        }
+        .heading > span{
+            color: rgb(242, 21, 21);
+        }
+        .elemts{
+            border-top: 1px solid #000;
+            padding: 10px;
+            display: flex;
+            justify-content: center;
+            align-items:center ;
+            flex-direction: column;
+            margin-top: 2px;
+            gap: 12px;
+        }
+        label{
+            font-size: 19px;
+            font-weight: 700;
+        }
+        input{
+            outline: none;
+            padding: 10px;
+            border-radius: 5px;
+            border: none;
+            font-size: 12px;
+        }
+
+       
+        .submit{
+            background-color: #8bcd3fa5;
+            color: #fff;
+            padding: 10px 20px;
+            border: none;
+            font-size: 15px;
+            border-radius: 5px;
+            cursor: pointer;
+            font-weight: bold;
+        }
+        .submit:hover{
+            background-color: #88ff00;
+            color: black;
+            transition: all 0.3s ease;
+        }
+        .result{
+            display: flex;
+            justify-content:center ;
+            align-items: center;
+            flex-direction: column;
+            margin-top: 20px;
+            gap: 12px;
+            padding: 10px;
+            border-bottom: 1px solid #000;
+            display: none;
+           
+        }
+        .resh{
+            font-size: 20px;
+            font-weight: 800;
+        }
+        .bmi{
+            border: 1px solid #000;
+            padding: 1px 10px;
+            background-color: #ffffff;
+            border-radius: 5px;
+            border: none;
+
+        }
+        .status{
+
+            border: 1px solid #000;
+            padding: 1px 10px;
+            background-color: #ffffff;
+            border-radius: 5px;
+            border: none;
+
+        }
+        .info{
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            margin-top: 30px;
+        }
+        .bmi-table{
+            border-collapse: collapse;
+            width: 100%;
+        }
+        .bmi-table th{
+            background-color: #333;
+            color: #fff;
+            padding: 10px;
+            font-size: 15px;
+        }
+        .bmi-table td{
+            padding: 10px;
+            font-size: 15px;
+            text-align: center;
+            border: 1px solid #000;
+        }
+        .bmi-table tr:nth-child(even){
+            background-color: #dcd0d0;
+        }
+        .bmi-table tr:nth-child(odd){
+            background-color: #cbed9c;
+        }
+        .bmi-table tr:hover{
+            background-color: #f2f2f2;
+        }
+        @media (min-width: 1024px) {
+            .elemts {
+            gap: 25px;
+            }
+            label {
+            font-size: 24px;
+            }
+            input {
+            font-size: 24px;
+            padding: 15px;
+            }
+            .submit{
+                font-size: 20px;
+                padding: 15px 25px;
+            }
+            
+        }
+
+    </style>
+</head>
+<body>
+    <nav>
+        <div class="logo">
+            <h4>BMI</h4>
+        </div>
+        <div class="btns">
+            <button class="clear">CLEAR</button>
+            <Button class="his">HISTORY</Button>
+        </div>
+    </nav>
+
+    <div class="heading">
+        <h2 class="heading">
+            CALCULATE  &nbsp;<span>
+                YOUR BMI
+            </span>
+        </h2>
+    </div>
+
+    <div class="container">
+        <form >
+            <div class="elemts">
+                <label for="height">Height (in m)</label>
+                <input type="text" name="height" id="height" placeholder="Enter your height">
+                <label for="weight">Weight (in kg)</label>
+                <input type="text" name="weight" id="weight" placeholder="Enter your weight">
+                <label for= "age" >Age</label>
+                <input type="text" name="age" id="age" placeholder="Enter your age">
+                <button class="submit">SUBMIT</button>
+            </div>
+        </form> 
+    </div>
+
+    <div class="result">
+        <h2 class="resh">Your BMI is: </h2>
+        <h2 class="reshRes">You are: </h2>
+    </div>
+
+
+    <div class="info">
+        <table class="bmi-table">
+            <thead>
+                <tr>
+                    <th>Classification</th>
+                    <th>BMI range - kg/m<sup>2</sup></th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr>
+                    <td>Severe Thinness</td>
+                    <td>&lt; 16</td>
+                </tr>
+                <tr>
+                    <td>Moderate Thinness</td>
+                    <td>16 - 17</td>
+                </tr>
+                <tr>
+                    <td>Mild Thinness</td>
+                    <td>17 - 18.5</td>
+                </tr>
+                <tr>
+                    <td>Normal</td>
+                    <td>18.5 - 25</td>
+                </tr>
+                <tr>
+                    <td>Overweight</td>
+                    <td>25 - 30</td>
+                </tr>
+                <tr>
+                    <td>Obese Class I</td>
+                    <td>30 - 35</td>
+                </tr>
+                <tr>
+                    <td>Obese Class II</td>
+                    <td>35 - 40</td>
+                </tr>
+                <tr>
+                    <td>Obese Class III</td>
+                    <td>&gt; 40</td>
+                </tr>
+            </tbody>
+        </table>
+    </div>
+
+   <footer>
+         <p style="text-align: center; margin-top: 20px;">&copy; 2025 BMI Calculator by Munawar Abbas</p>
+
+   </footer>
+    <script>
+        const HeightInput = document.getElementById('height');
+        const WeightInput = document.getElementById('weight');
+        const AgeInput = document.getElementById('age');
+        const SubmitBtn = document.querySelector('.submit');
+
+       
+
+
+        SubmitBtn.addEventListener("click", (e)=>{
+            e.preventDefault();
+            Calulate();
+            HeightInput.value = "";
+            WeightInput.value = "";
+            AgeInput.value = "";
+
+
+            
+
+        })
+
+        function Calulate()
+        {
+            const height = parseInt(HeightInput.value);
+            const weight = parseInt(WeightInput.value);
+            const age = parseInt(AgeInput.value);
+
+           // convert hight in to meters 
+           const Reshead = document.querySelector('.resh');
+          const ResheadRes = document.querySelector('.reshRes');
+         const resultDiv = document.querySelector(".result")
+            
+            let status = "";
+            if(height === "" || weight === "" || age === "" || height < 100 || weight < 30 || age < 10){
+                alert("Please fill all the fields");
+            }
+            else{
+               if(height > 100  && weight > 30 && age > 10 && age < 100 && height < 350 && weight < 200){
+                const heightInMeter  = height / 100;
+                const bmi = weight / (heightInMeter * heightInMeter);
+              
+                const bmispan = document.createElement('span');
+                bmispan.classList.add('bmi');
+                const statusspan = document.createElement('span');
+                statusspan.classList.add('status');
+                resultDiv.style.display = "flex";
+               
+            console.log("BMI :", bmi);
+            if(bmi < 16){
+                status = "Severe Thinness";
+                bmispan.textContent = bmi;
+                statusspan.textContent = status;
+
+                Reshead.appendChild(bmispan);
+                ResheadRes.appendChild(statusspan);
+
+            }
+            else if(bmi >= 16 && bmi <= 17){
+                status = "Moderate Thinness";
+                bmispan.textContent = bmi;
+                statusspan.textContent = status;
+
+                Reshead.appendChild(bmispan);
+                ResheadRes.appendChild(statusspan);
+            }
+            else if(bmi > 17 && bmi <= 18.5){
+                status = "Mild Thinness";
+                bmispan.textContent = bmi;
+                statusspan.textContent = status;
+
+                Reshead.appendChild(bmispan);
+                ResheadRes.appendChild(statusspan);
+            }
+            else if(bmi > 18.5 && bmi <= 25){
+                status = "Normal";
+                bmispan.textContent = bmi;
+                statusspan.textContent = status;
+
+                Reshead.appendChild(bmispan);
+                ResheadRes.appendChild(statusspan);
+            }
+            else if(bmi > 25 && bmi <= 30){
+                status = "Overweight";
+                bmispan.textContent = bmi;
+                statusspan.textContent = status;
+
+                Reshead.appendChild(bmispan);
+                ResheadRes.appendChild(statusspan);
+            }
+            else if(bmi > 30 && bmi <= 35){
+                status = "Obese Class I";
+                bmispan.textContent = bmi;
+                statusspan.textContent = status;
+
+                Reshead.appendChild(bmispan);
+                ResheadRes.appendChild(statusspan);
+            }
+            else if(bmi > 35 && bmi <= 40){
+                status = "Obese Class II";
+                bmispan.textContent = bmi;
+                statusspan.textContent = status;
+
+                Reshead.appendChild(bmispan);
+                ResheadRes.appendChild(statusspan);
+            }
+            else if(bmi > 40){
+                status = "Obese Class III";
+                bmispan.textContent = bmi;
+                statusspan.textContent = status;
+
+                Reshead.appendChild(bmispan);
+                ResheadRes.appendChild(statusspan);
+            }
+               }
+               else{
+                   alert("Height should be greater than 100 cm and Less than 300, Weight should be greater than 30 kg and Less than 201Kg and Age should be greater than 10");
+               }
+            }
+            
+        }
+
+        const clearbtn = document.querySelector('.clear');
+        clearbtn.addEventListener('click', ()=>{
+            const Reshead = document.querySelector('.resh');
+            const ResheadRes = document.querySelector('.reshRes');
+            const resultDiv = document.querySelector(".result")
+            resultDiv.style.display = "none";
+            Reshead.innerHTML = "";
+            ResheadRes.innerHTML = "";
+        })
+        const hisbtn = document.querySelector('.his');
+        hisbtn.addEventListener('click', ()=>{
+            alert("No History Found");
+        })
+
+    </script>
+</body>
+</html>
