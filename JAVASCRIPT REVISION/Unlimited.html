@@ -1,0 +1,170 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>BGC CHANGER</title>
+    <style>
+        *{
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        nav{
+           display: flex;
+           justify-content: space-between;
+              align-items: center;
+            padding: 14px;
+            background-color: lightgrey;
+            font-family: "poppins";
+        }
+        .logodiv{
+            font-size: 30px;
+            font-weight: bold;
+        }
+        .login{
+            padding: 10px 20px;
+            background-color: lightblue;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+            font-size: 18px;
+            font-weight: bold;
+        }
+        .singup{ 
+              font-weight: bold;
+            padding: 10px 20px;
+            background-color: rgb(186, 230, 173);
+            border: none;
+            background-color: rgb(186, 230, 173);
+            border-radius: 5px;
+            cursor: pointer;
+            font-family: "poppins";
+            font-size: 18px;
+            font-weight: bold;
+        }
+        .login:hover{
+            background-color: rgb(104, 249, 246);
+            transition: all 0.5s;
+        }
+        .singup:hover{
+            background-color: rgb(59, 232, 122);
+            transition: all 0.5s;
+        }
+        .mainhead{
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            font-family: "poppins";
+            font-size: 50px;
+            font-weight: bold;
+            margin-top: 50px;
+        }
+        .cenhead{
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            font-family: "poppins";
+            font-size: 50px;
+            margin-top: 20px;
+        }
+        .btncontainer{
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            margin-top: 45px;
+            gap: 20px;
+        }
+        @media (max-width: 768px) {
+            nav {
+            flex-direction: column;
+            }
+            .mainhead {
+            font-size: 20px;
+            flex-wrap: wrap;
+
+            }
+            .login, .singup {
+            width: 100%;
+            margin-bottom: 10px;
+            }
+            .cenhead{
+                font-size: 20px;
+            }
+        }
+       
+        button{
+            padding: 20px;
+            border: none;
+            border-radius: 12px;
+            cursor: pointer;
+            font-size: 20px;
+            font-weight: bold;
+        }
+        .start{
+            background-color: lightgreen;
+            color: white;
+        }
+        .stop{
+            background-color: rgba(255, 0, 0, 0.543);
+            color: white;
+        }
+        .start:hover{
+            background-color: rgb(59, 232, 122);
+            transition: all 0.5s;
+            color: black;
+        }
+        .stop:hover{
+            background-color: rgb(255, 0, 0);
+            transition: all 0.5s;
+            color: black;
+        }
+    </style>
+</head>
+<body>
+    <nav>
+            <div class="logo">
+                <h1 class="logodiv">CHNG</h1>
+            </div>
+            <div class="leftritgh">
+                <button class="login">Login</button>
+                <button class="singup">Signup</button>
+            </div>
+      </nav>
+
+      <h1 class="cenhead">
+       &nbsp; CLICK  &nbsp;<span>THE &nbsp;</span> BUTTON
+      </h1>
+  <div class="btncontainer">
+    
+    <button class="start">START</button>
+    <button class="stop">STOP</button>
+  </div>
+
+
+
+  <script>
+    const startBtn = document.querySelector('.start');
+    const stopBtn = document.querySelector('.stop');
+
+   const colors = ["red", "blue", "white", "pink", "yellow", "orange", "aqua", "maroon", "voilet", "gray", "lightblue"];
+
+   
+   let IntervelId;
+    startBtn.addEventListener("click",()=>{
+      IntervelId = setInterval(()=>{
+            const random = Math.floor(Math.random()*colors.length);
+            document.body.style.backgroundColor = colors[random];
+        },1000)
+
+    })
+    stopBtn.addEventListener("click",()=>{
+        clearInterval(IntervelId);
+        
+    })
+    
+
+    
+  </script>
+</body>
+</html>
